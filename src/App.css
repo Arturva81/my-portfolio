@@ -1,0 +1,6 @@
+/* Polaroid project card */
+.polaroid-card {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
