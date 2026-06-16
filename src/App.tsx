@@ -1,9 +1,22 @@
+import React from 'react'
 import nameImg from './assets/Asset 2.png'
 import myWorkImg from './assets/Asset 1.png'
 import photoImg from './assets/Asset 3.png'
 import contactImg from './assets/Asset 4.png'
 import blobImg from './assets/Asset 5.png'
+import stickerStar from './assets/Asset 7.png'
+import stickerBolt from './assets/8.png'
+import stickerSplash from './assets/9.png'
+import stickerSparkle from './assets/10.png'
 import './App.css'
+import {
+  SiHtml5, SiCss, SiJavascript, SiAstro, SiReact, SiTailwindcss, SiNextdotjs, SiFigma,
+} from 'react-icons/si'
+
+// Adobe app badge component — matches Adobe's own branding
+const AdobeBadge = ({ letters, colorClass }: { letters: string; colorClass: string }) => (
+  <span className={`adobe-badge ${colorClass}`}>{letters}</span>
+)
 
 const projects = [
   { id: 1, href: 'https://www.behance.net/arturovzquez2', label: 'Project 1' },
@@ -18,22 +31,29 @@ const projects = [
 
 function App() {
   return (
-    <div className="min-h-screen bg-white text-black font-sans overflow-x-hidden">
+    <div className="animated-bg min-h-screen text-black font-sans overflow-x-hidden">
 
       {/* ── Navbar ── */}
-      <nav className="flex justify-between items-start px-10 py-6">
+      <nav className="flex justify-between items-start px-10 md:px-24 lg:px-40 py-6">
         <div className="font-bold text-black leading-tight text-base">
           Personal<br />Portfolio
         </div>
         <div className="flex gap-8 text-sm font-medium">
           <a href="#home" className="underline hover:opacity-70 transition-opacity">Home</a>
           <a href="#work" className="underline hover:opacity-70 transition-opacity">My Work</a>
+          <a href="#experience" className="underline hover:opacity-70 transition-opacity">Experience</a>
+          <a href="#education" className="underline hover:opacity-70 transition-opacity">Education</a>
+          <a href="#skills" className="underline hover:opacity-70 transition-opacity">Skills</a>
           <a href="#contact" className="underline hover:opacity-70 transition-opacity">Contact</a>
         </div>
       </nav>
 
       {/* ── Hero ── */}
-      <section id="home" className="flex flex-col md:flex-row items-center justify-between px-10 md:px-20 pb-20 gap-10">
+      <section id="home" className="relative flex flex-col md:flex-row items-center justify-between px-10 md:px-24 lg:px-40 pb-20 gap-10">
+        {/* sticker: yellow star top-left */}
+        <img src={stickerStar} alt="" aria-hidden="true" className="sticker absolute top-2 left-6 w-14 -rotate-12 pointer-events-none select-none" />
+        {/* sticker: orange sparkle bottom-left near text */}
+        <img src={stickerSparkle} alt="" aria-hidden="true" className="sticker absolute bottom-10 left-36 w-10 rotate-12 pointer-events-none select-none" />
         <div className="flex-1 max-w-xl">
           <img src={nameImg} alt="Arturo Vazquez" className="w-full max-w-md mb-8" />
           <p className="text-gray-700 text-base leading-relaxed mb-6">
@@ -64,7 +84,11 @@ function App() {
       </section>
 
       {/* ── My Work ── */}
-      <section id="work" className="relative px-10 md:px-20 py-16">
+      <section id="work" className="relative px-10 md:px-24 lg:px-40 py-16">
+        {/* sticker: green bolt top-left */}
+        <img src={stickerBolt} alt="" aria-hidden="true" className="sticker absolute top-6 left-10 w-12 rotate-6 pointer-events-none select-none" />
+        {/* sticker: blue splash bottom-right of section */}
+        <img src={stickerSplash} alt="" aria-hidden="true" className="sticker absolute bottom-8 right-12 w-16 -rotate-12 pointer-events-none select-none" />
         {/* orange blob decoration – right edge */}
         <div className="absolute right-0 top-8 w-24 md:w-32 overflow-hidden pointer-events-none select-none">
           <img src={blobImg} alt="" className="w-full translate-x-8" />
@@ -72,9 +96,6 @@ function App() {
 
         <div className="flex flex-wrap items-center gap-6 mb-12">
           <img src={myWorkImg} alt="My Work" className="w-52 md:w-64" />
-          <p className="text-gray-500 text-base">
-            Github Projects &amp; Behance
-          </p>
         </div>
 
         {/* 4 × 2 project card grid */}
@@ -100,8 +121,146 @@ function App() {
         </div>
       </section>
 
+      {/* ── Work Experience ── */}
+      <section id="experience" className="relative px-10 md:px-24 lg:px-40 py-16">
+        {/* sticker: orange sparkle top-right */}
+        <img src={stickerSparkle} alt="" aria-hidden="true" className="sticker absolute top-8 right-16 w-14 -rotate-6 pointer-events-none select-none" />
+        <h2 className="section-title text-5xl mb-12">WORK EXPERIENCE</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl">
+          {[
+            {
+              role: 'Graphic Designer',
+              company: 'Freelancer — Mexico',
+              period: '2023 – 2025',
+              bullets: [
+                'Created ads and social media content for brands including Circle K, Fiesta Market, and Insane Nightclub, driving engagement and brand visibility.',
+                'Designed branding and visual identities for international clients, ensuring cohesive design systems across digital and print platforms.',
+              ],
+            },
+            {
+              role: 'Social Media Designer',
+              company: 'Senso MX — Mexico',
+              period: '2024',
+              bullets: [
+                'Planned social media strategies, sourced and edited images, and created organic content and ads.',
+                'Created motion graphics and animated videos to enhance marketing campaigns.',
+              ],
+            },
+            {
+              role: 'Educational Graphic Designer',
+              company: 'Twinkl Educational Publishing — UK',
+              period: '2022 – 2023',
+              bullets: [
+                'Designed educational resources, interactive PDFs, and PowerPoints for school distribution.',
+                'Working remotely, collaborating with a team to create quality products that met project goals.',
+              ],
+            },
+            {
+              role: 'Custom Apparel Designer',
+              company: 'Awkward Styles — USA',
+              period: '2021 – 2022',
+              bullets: [
+                'Created custom garment designs, stationery for events, and edited images for the company catalog.',
+                'Ensured great visuals and brand consistency across printed and digital materials.',
+              ],
+            },
+            {
+              role: 'Social Media Designer',
+              company: 'Blakken CC — Mexico',
+              period: '2021 – 2022',
+              bullets: [
+                'In charge of creating social media content, sourced and edited photos and videos, and created illustrations for various brands.',
+                'Helped enhance brand image and engagement on social media platforms.',
+              ],
+            },
+          ].map((job, i) => (
+            <div key={i} className="relative bg-white border-2 border-black rounded-xl p-6 shadow-[5px_5px_0px_0px_rgba(251,146,60,1)] hover:shadow-[2px_2px_0px_0px_rgba(251,146,60,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all">
+              <span className="inline-block text-xs font-semibold text-orange-500 border border-orange-300 rounded-full px-3 py-0.5 mb-3">{job.period}</span>
+              <h3 className="text-xl font-bold mb-1">{job.role}</h3>
+              <p className="text-blue-600 font-medium mb-4">{job.company}</p>
+              <ul className="list-disc list-outside ml-4 space-y-1">
+                {job.bullets.map((b, j) => (
+                  <li key={j} className="text-gray-600 text-sm leading-relaxed">{b}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Education ── */}
+      <section id="education" className="relative px-10 md:px-24 lg:px-40 py-16">
+        {/* sticker: yellow star top-right */}
+        <img src={stickerStar} alt="" aria-hidden="true" className="sticker absolute top-6 right-10 w-16 rotate-12 pointer-events-none select-none" />
+        {/* sticker: green bolt bottom-left */}
+        <img src={stickerBolt} alt="" aria-hidden="true" className="sticker absolute bottom-6 left-16 w-10 -rotate-15 pointer-events-none select-none" />
+        <h2 className="section-title text-5xl mb-12">EDUCATION</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+          {[
+            {
+              degree: 'Diploma in Web Application Development',
+              school: 'Cornerstone International Community College of Canada — Canada',
+              period: '2025 – Present',
+              bullets: [
+                'Hands-on program focused on full stack development, and interactive media tools for real-world digital applications.',
+              ],
+            },
+            {
+              degree: 'Degree in Digital Design',
+              school: 'Universidad Iberoamericana León — Mexico',
+              period: '2019 – 2024',
+              bullets: [
+                'Comprehensive training in multimedia design, interactive content, and cross-platform visual communication.',
+              ],
+            },
+          ].map((edu, i) => (
+            <div key={i} className="relative bg-white border-2 border-black rounded-xl p-6 shadow-[5px_5px_0px_0px_rgba(96,165,250,1)] hover:shadow-[2px_2px_0px_0px_rgba(96,165,250,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all">
+              <span className="inline-block text-xs font-semibold text-blue-500 border border-blue-300 rounded-full px-3 py-0.5 mb-3">{edu.period}</span>
+              <h3 className="text-xl font-bold mb-1">{edu.degree}</h3>
+              <p className="text-orange-500 font-medium mb-4">{edu.school}</p>
+              <ul className="list-disc list-outside ml-4 space-y-1">
+                {edu.bullets.map((b, j) => (
+                  <li key={j} className="text-gray-600 text-sm leading-relaxed">{b}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Skills ── */}
+      <section id="skills" className="relative px-10 md:px-24 lg:px-40 py-16">
+        {/* sticker: blue splash left */}
+        <img src={stickerSplash} alt="" aria-hidden="true" className="sticker absolute top-10 right-20 w-14 rotate-6 pointer-events-none select-none" />
+        <h2 className="section-title text-5xl mb-12">SKILLS</h2>
+        <div className="flex flex-wrap gap-4">
+          {([
+            { label: 'HTML5',         icon: <SiHtml5 className="text-[#E34F26]" /> },
+            { label: 'CSS3',          icon: <SiCss className="text-[#1572B6]" /> },
+            { label: 'JavaScript',    icon: <SiJavascript className="text-[#F7DF1E]" /> },
+            { label: 'Astro',         icon: <SiAstro className="text-[#FF5D01]" /> },
+            { label: 'React',         icon: <SiReact className="text-[#61DAFB]" /> },
+            { label: 'Tailwind CSS',  icon: <SiTailwindcss className="text-[#06B6D4]" /> },
+            { label: 'Next.js',       icon: <SiNextdotjs className="text-black" /> },
+            { label: 'Photoshop',     icon: <AdobeBadge letters="Ps" colorClass="adobe-ps" /> },
+            { label: 'Illustrator',   icon: <AdobeBadge letters="Ai" colorClass="adobe-ai" /> },
+            { label: 'Premiere Pro',  icon: <AdobeBadge letters="Pr" colorClass="adobe-pr" /> },
+            { label: 'After Effects', icon: <AdobeBadge letters="Ae" colorClass="adobe-ae" /> },
+            { label: 'Figma',         icon: <SiFigma className="text-[#F24E1E]" /> },
+          ] as { label: string; icon: React.ReactNode }[]).map(({ label, icon }) => (
+            <span
+              key={label}
+              className="flex items-center gap-2 px-5 py-3 bg-white border-2 border-black rounded-full text-base font-semibold shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-default"
+            >
+              <span className="text-xl">{icon}</span>
+              {label}
+            </span>
+          ))}
+        </div>
+      </section>
+
       {/* ── CTA + Contact ── */}
-      <section id="contact" className="relative px-10 md:px-20 pt-16 pb-24">
+      <section id="contact" className="relative px-10 md:px-24 lg:px-40 pt-16 pb-24">
         {/* "Let's work together!" heading */}
         <h2 className="text-3xl md:text-4xl font-bold text-right mb-16">
           Let&apos;s work together!
